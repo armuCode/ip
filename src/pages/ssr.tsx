@@ -13,6 +13,10 @@ export default SSRPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   let ip = req.headers["x-real-ip"];
+  console.log(
+    "🚀----------------------------------- ~ constgetServerSideProps:GetServerSideProps= ~ ip:",
+    ip
+  );
   if (!ip) {
     const forwardedFor = req.headers["x-forwarded-for"];
     if (Array.isArray(forwardedFor)) {
