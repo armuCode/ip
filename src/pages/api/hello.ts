@@ -9,9 +9,9 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  let ip = req.headers["x-real-ip"] as string;
+  let ip = req.headers["x-forwarded-for"] as string;
 
-  const forwardedFor = req.headers["x-forwarded-for"] as string;
+  const forwardedFor = req.headers["x-real-ip"] as string;
   if (!ip && forwardedFor) {
     ip = forwardedFor?.split(",").at(0) ?? "Unknown";
   }
